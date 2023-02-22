@@ -6,7 +6,7 @@ export default function TextInputs() {
 
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
-
+    const [multiline, setMultiline] = useState('')
     return (
         <View>
           <Header title='Input Text' />
@@ -32,8 +32,29 @@ export default function TextInputs() {
             <Text style={styles.inputText}>
                 Age: {age}
             </Text>
+
+            {/* 
+                Multiline line does not accept  borderBottom,borderLeftWidth etc.
+                so we need to wrap it inside View
+            */}
+            <View style={{
+                borderBottomColor:'#000',
+                borderBottomWidth: 1,
+                backgroundColor: multiline.toLowerCase()
+            }}>
+                <TextInput 
+                    editable
+                    multiline
+                    numberOfLines={4}
+                    maxLength={50}
+                    value={multiline}
+                    onChangeText={setMultiline}
+                    style={{padding:10}}
+                />
+            </View>
+
           </View>
-          
+
         </View>
     )
 }
